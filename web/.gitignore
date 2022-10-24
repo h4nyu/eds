@@ -1,0 +1,5 @@
+next-env.d.ts
+.next
+dist
+!.storybook/*
+!next.config.js

@@ -1,0 +1,14 @@
+*.env
+*.js
+node_modules
+dist
+tsconfig.tsbuildinfo
+!migrations/*.js
+# yarn
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

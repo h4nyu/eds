@@ -1,0 +1,59 @@
+version: "2.4"
+
+x-env: &env
+  WEB_PORT: &WEB_PORT ${WEB_PORT:?}
+  # optional PREFIX: &PREFIX ${PREFIX}
+
+  # internal
+  DATABASE_URL: postgres://app:app@db/app
+  API_URL: http://api
+
+x-app: &app
+  image: "app"
+  build:
+    context: .
+    args:
+      - http_proxy
+      - https_proxy
+  volumes:
+    - .:/app
+  environment:
+    - DATABASE_URL=postgres://app:app@db/app
+
+services:
+  app:
+    <<: *app
+    environment:
+      <<: *env
+
+  api:
+    <<: *app
+    command: bash -c "yarn clean &&  yarn cli start"
+    working_dir: /app/cli
+    depends_on:
+      - "db"
+    environment:
+      <<: *env
+
+  storybook:
+    <<: *app
+    command: yarn storybook -p ${STORYBOOK_PORT}
+    working_dir: /app/web
+    ports:
+      - "$STORYBOOK_PORT:$STORYBOOK_PORT"
+  web:
+    <<: *app
+    command: yarn dev
+    working_dir: /app/web
+    ports:
+      - "${WEB_PORT}:3000"
+    depends_on:
+      - api
+    environment:
+      <<: *env
+
+  db:
+    image: "postgres:14"
+    environment:
+      POSTGRES_PASSWORD: app
+      POSTGRES_USER: app
