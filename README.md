@@ -7,5 +7,5 @@
 | **[@app/web](./web)**       | Web frontend      |
 | **[@app/server](./server)** | Backend           |
 | **[@app/api](./api)**       | Client            |
-| **[@kgy/cli](./cli)**       | CLI               |
+| **[@app/cli](./cli)**       | CLI               |
 
