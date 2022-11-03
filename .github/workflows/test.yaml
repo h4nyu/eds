@@ -50,7 +50,7 @@ jobs:
             docker load < image.tar
           else
             docker-compose build app
-            docker save afrs > image.tar
+            docker save app > image.tar
           fi
 
       - name: Install dependencies & Build
