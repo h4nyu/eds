@@ -5,8 +5,8 @@ dist
 tsconfig.tsbuildinfo
 !migrations/*.js
 # yarn
+.pnp.*
 .yarn/*
-!.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases

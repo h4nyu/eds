@@ -1,0 +1,59 @@
+name: Test
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+env:
+  API_KEY: ${{ secrets.API_KEY }}
+  WEB_PORT: 3000
+  STORYBOOK_PORT: 6006
+  AUTH0_SECRET: test
+  AUTH0_CLIENT_ID: test
+  AUTH0_CLIENT_SECRET: test
+  AUTH0_BASE_URL: test
+  AUTH0_ISSUER_BASE_URL: test
+  FIREBASE_EMULATOR_PORT: 4000
+
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: image.tar
+          key: ${{ runner.os }}-docker-${{ hashFiles('Dockerfile') }}
+          restore-keys: |
+            ${{ runner.os }}-docker
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        with:
+          path: .yarn/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Build the Docker image if needed
+        run: |
+          if test -f image.tar; then
+            docker load < image.tar
+          else
+            docker-compose build app
+            docker save afrs > image.tar
+          fi
+
+      - name: Install dependencies & Build
+        run: |
+          docker-compose run --rm app yarn install
+          docker-compose run --rm app yarn build
