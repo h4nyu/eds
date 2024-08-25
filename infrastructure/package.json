@@ -1,0 +1,33 @@
+{
+  "name": "@app/infrastructure",
+  "version": "0.1.0",
+  "license": "MIT",
+  "types": "index.ts",
+  "scripts": {
+    "clean": "tsc --build --clean",
+    "build": "tsc --noEmit false",
+    "prepack": "yarn build",
+    "postpack": "yarn clean",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@aws-sdk/client-batch": "3.637.0",
+    "@types/jest": "^29.2.0",
+    "@types/node": "^18.11.2",
+    "csv": "^6.2.1",
+    "lodash": "^4.17.21",
+    "nanoid": "^3.3.1"
+  },
+  "devDependencies": {
+    "jest": "29.7.0",
+    "ts-jest": "29.2.5",
+    "typescript": "5.5.4"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    },
+    "testEnvironment": "node",
+    "testRegex": ".*\\.(test|spec)?\\.(ts|tsx)$"
+  }
+}
