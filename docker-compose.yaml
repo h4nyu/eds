@@ -1,13 +1,11 @@
-version: "2.4"
-
 x-env: &env
-  WEB_PORT: &WEB_PORT ${WEB_PORT:?}
-  STORYBOOK_PORT: &STORYBOOK_PORT ${STORYBOOK_PORT:?}
-  AUTH0_SECRET: &AUTH0_SECRET ${AUTH0_SECRET:?}
-  AUTH0_CLIENT_ID: &AUTH0_CLIENT_ID ${AUTH0_CLIENT_ID:?}
-  AUTH0_CLIENT_SECRET: &AUTH0_CLIENT_SECRET ${AUTH0_CLIENT_SECRET:?}
-  AUTH0_ISSUER_BASE_URL: &AUTH0_ISSUER_BASE_URL ${AUTH0_ISSUER_BASE_URL:?}
-  AUTH0_BASE_URL: &AUTH0_BASE_URL ${AUTH0_BASE_URL:?}
+  WEB_PORT: &WEB_PORT ${WEB_PORT:-3000}
+  STORYBOOK_PORT: &STORYBOOK_PORT ${STORYBOOK_PORT:-6006}
+  AUTH0_SECRET: &AUTH0_SECRET ${AUTH0_SECRET:-}
+  AUTH0_CLIENT_ID: &AUTH0_CLIENT_ID ${AUTH0_CLIENT_ID:-}
+  AUTH0_CLIENT_SECRET: &AUTH0_CLIENT_SECRET ${AUTH0_CLIENT_SECRET:-}
+  AUTH0_ISSUER_BASE_URL: &AUTH0_ISSUER_BASE_URL ${AUTH0_ISSUER_BASE_URL:-}
+  AUTH0_BASE_URL: &AUTH0_BASE_URL ${AUTH0_BASE_URL:-}
 
   # internal
   DATABASE_URL: postgres://app:app@db/app
@@ -42,10 +40,14 @@ services:
 
   storybook:
     <<: *app
-    command: yarn storybook -p ${STORYBOOK_PORT}
+    command: yarn storybook
     working_dir: /app/web
     ports:
-      - "$STORYBOOK_PORT:$STORYBOOK_PORT"
+      - target: 6006
+        published: *STORYBOOK_PORT
+        protocol: tcp
+        mode: host
+
   web:
     <<: *app
     command: yarn dev
