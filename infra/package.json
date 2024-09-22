@@ -1,5 +1,5 @@
 {
-  "name": "@app/server",
+  "name": "@kkpm/infra",
   "version": "0.1.0",
   "main": "index.js",
   "license": "MIT",
@@ -12,8 +12,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@app/core": "^0.1.0",
-    "@app/usecase": "^0.1.0",
+    "@kkpm/core": "^0.1.0",
+    "@kkpm/usecase": "^0.1.0",
     "@fastify/swagger": "^8.0.0",
     "@oniku/lockfile": "^0.0.0",
     "axios": "^0.26.1",

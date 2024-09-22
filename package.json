@@ -1,12 +1,12 @@
 {
-  "name": "app",
+  "name": "kkpm",
   "version": "0.1.0",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "clean": "yarn workspaces foreach -pv --from '@app/*' run clean",
-    "lint": "yarn workspaces foreach -pv --from '@app/*' run lint",
-    "build": "yarn workspaces foreach -pvR --topological-dev --from '@app/*' run build"
+    "clean": "yarn workspaces foreach -pv --from '@kkpm/*' run clean",
+    "lint": "yarn workspaces foreach -pv --from '@kkpm/*' run lint",
+    "build": "yarn workspaces foreach -pvR --topological-dev --from '@kkpm/*' run build"
   },
   "workspaces": [
     "cli",
