@@ -1,4 +1,4 @@
-name: Test
+name: main
 
 on:
   push:
@@ -49,11 +49,11 @@ jobs:
           if test -f image.tar; then
             docker load < image.tar
           else
-            docker-compose build app
+            docker compose build app
             docker save app > image.tar
           fi
 
       - name: Install dependencies & Build
         run: |
-          docker-compose run --rm app yarn install
-          docker-compose run --rm app yarn build
+          docker compose run --rm app yarn install
+          docker compose run --rm app yarn build
