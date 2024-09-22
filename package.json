@@ -4,8 +4,8 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "clean": "yarn workspaces foreach -pv --from '@kkpm/*' run clean",
-    "lint": "yarn workspaces foreach -pv --from '@kkpm/*' run lint",
+    "clean": "yarn workspaces foreach -Apv run clean",
+    "lint": "yarn workspaces foreach -Apv run lint",
     "build": "yarn workspaces foreach -pvR --topological-dev --from '@kkpm/*' run build"
   },
   "workspaces": [

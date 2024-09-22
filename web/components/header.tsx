@@ -1,11 +1,9 @@
 import React from "react";
 import Link, { LinkProps } from "next/link";
-import { useUser } from "@auth0/nextjs-auth0";
 import useSWR, { useSWRConfig } from "swr";
 
 export const Header = (props: {}) => {
   const [isActive, setIsActive] = React.useState(false);
-  const { user } = useUser();
   const toggle = () => {
     setIsActive(!isActive);
   };
@@ -32,13 +30,6 @@ export const Header = (props: {}) => {
       </div>
       <div className="navbar-end">
         <div className="navbar-item">
-          <div className="buttons">
-            {user ? (
-              <a className="button" href="/api/auth/logout">Logout</a>
-            ) : (
-              <a className="button" href="/api/auth/login">Login</a>
-            )}
-          </div>
         </div>
       </div>
     </nav>
