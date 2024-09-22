@@ -1,5 +1,5 @@
-export { ErrorKind } from "@app/core/error";
-import { User } from "@app/core/user"
+export { ErrorKind } from "@kkpm/core/error";
+import { User } from "@kkpm/core/user"
 
 export type Lock = {
   auto: <T>(fn: () => Promise<T>) => Promise<T>;
