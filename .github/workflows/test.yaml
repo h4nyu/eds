@@ -49,7 +49,7 @@ jobs:
           if test -f image.tar; then
             docker load < image.tar
           else
-            docker-compose build app
+            docker compose build app
             docker save app > image.tar
           fi
 
