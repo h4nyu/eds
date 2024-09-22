@@ -10,11 +10,10 @@
   },
   "workspaces": [
     "cli",
-    "server",
+    "infra",
     "web",
     "api",
-    "core",
-    "usecase"
+    "core"
   ],
   "dependencies": {
     "@types/jest": "^29.2.0",

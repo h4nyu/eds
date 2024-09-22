@@ -12,9 +12,8 @@
     "test": "jest"
   },
   "dependencies": {
-    "@kkpm/core": "^0.1.0",
-    "@kkpm/usecase": "^0.1.0",
     "@fastify/swagger": "^8.0.0",
+    "@kkpm/core": "^0.1.0",
     "@oniku/lockfile": "^0.0.0",
     "axios": "^0.26.1",
     "fastify": "^4.8.1",

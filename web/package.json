@@ -12,9 +12,8 @@
     "storybook": "start-storybook -p 6006"
   },
   "devDependencies": {
-    "@kkpm/api": "^0.1.0",
-    "@kkpm/core": "^0.1.0",
     "@babel/core": "^7.19.3",
+    "@kkpm/core": "^0.1.0",
     "@storybook/react": "^6.5.12",
     "@types/node": "18.8.4",
     "@types/react": "18.0.21",
@@ -32,8 +31,8 @@
     "testRegex": ".*\\.(test|spec)?\\.(ts|tsx)$"
   },
   "dependencies": {
-    "@kkpm/core": "^0.1.0",
     "@auth0/nextjs-auth0": "^1.9.2",
+    "@kkpm/core": "^0.1.0",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/builder-webpack5": "^6.5.12",
     "@storybook/manager-webpack5": "^6.5.12",
